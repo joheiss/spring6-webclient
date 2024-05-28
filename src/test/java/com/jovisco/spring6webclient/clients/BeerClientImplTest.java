@@ -11,6 +11,11 @@ import com.jovisco.spring6webclient.model.BeerDTO;
 
 import static org.awaitility.Awaitility.await;
 
+/**
+ * 
+ * IMPORTANT: for those tests to run, the app spring6-ractive-mongo must run on http://localhost:8080
+ * 
+ */
 @SpringBootTest
 public class BeerClientImplTest {
 

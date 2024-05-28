@@ -32,6 +32,7 @@ public class BeerClientImpl implements BeerClient {
             .bodyToFlux(String.class);
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     public Flux<Map> getAllAsMap() {
         return webClient

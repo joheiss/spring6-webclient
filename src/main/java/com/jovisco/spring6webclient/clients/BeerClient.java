@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 public interface BeerClient {
 
     Flux<String> getAll();
+    @SuppressWarnings("rawtypes")
     Flux<Map> getAllAsMap();
     Flux<JsonNode> getAllAsJsonNode();
     Flux<BeerDTO> getAllBeers();
