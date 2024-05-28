@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "webclient.baseurl",
+  "type": "java.lang.String",
+  "description": "A description for 'webclient.baseurl'"
+}]}
