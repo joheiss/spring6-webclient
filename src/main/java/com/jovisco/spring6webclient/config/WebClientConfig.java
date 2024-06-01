@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.ReactiveOAuth2AuthorizedClientManager;
 import org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
+import org.zalando.logbook.Logbook;
+import org.zalando.logbook.spring.webflux.LogbookExchangeFilterFunction;
 
 @Configuration
 public class WebClientConfig implements WebClientCustomizer {
@@ -27,6 +29,12 @@ public class WebClientConfig implements WebClientCustomizer {
         var oAuthFilterFunction = new ServerOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
         oAuthFilterFunction.setDefaultClientRegistrationId("springauth");
        // oAuthFilterFunction.setDefaultOAuth2AuthorizedClient(true);
-        webClientBuilder.filter(oAuthFilterFunction).baseUrl(baseUrl);
+        
+       var logbookWebFilter = new LogbookExchangeFilterFunction(Logbook.builder().build());
+       
+       webClientBuilder
+            .filter(oAuthFilterFunction)
+            .filter(logbookWebFilter)
+            .baseUrl(baseUrl);
     }
 }
